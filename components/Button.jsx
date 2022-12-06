@@ -1,21 +1,27 @@
 import React from 'react';
 import {XCircleIcon} from '@heroicons/react/24/solid'
+import {useRouter} from 'next/router'
+const Button = ({signOut, title}) => {
+    const router = useRouter()
+    const handleClick = () => {
+        if(signOut){
+            signOut({ callbackUrl: '/admin' })
+        }else{
+            router.push(`/admin/scheduling`)
+        }
 
-const Logout = ({signOut}) => {
-    const handleLogOut = () => {
-        signOut({ callbackUrl: '/admin' })
     }
     return (
         <div className={`flex `}>
             <button
                 className={`hidden lg:flex bg-white hover:bg-red-600 py-2 px-3 rounded leading-none text-black hover:text-white uppercase`}
-            onClick={handleLogOut}
+            onClick={handleClick}
         >
-            Logout
+                {title}
         </button>
 
             <button
-                onClick={handleLogOut}
+                onClick={handleClick}
             >
                 <XCircleIcon className={`h-8 w-8 text-white lg:hidden`}/>
             </button>
@@ -23,4 +29,4 @@ const Logout = ({signOut}) => {
     );
 };
 
-export default Logout;
+export default Button;
