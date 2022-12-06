@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head'
-
-const Index = () => {
+import Schedule from "../components/Schedule"
+import axios from 'axios'
+const Index = ({games, club}) => {
     return (
         <div>
             <Head>
@@ -10,7 +11,7 @@ const Index = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={`hidden md:flex md:items-center md:justify-center h-screen w-full`}>
-                hidden 3
+               <Schedule  games={games} club={club}/>
             </div>
             <div className={`h-screen w-full md:hidden`}>
                 hidden
@@ -21,3 +22,16 @@ const Index = () => {
 };
 
 export default Index;
+export async function getServerSideProps(ctx) {
+    const host = ctx.req.headers.host;
+    const res = await axios.get(`https://`+host+`/api/games`);
+    const club = await axios.get(`https://`+host+`/api/club`);
+
+    return {
+        props: {
+            games: res.data,
+            club: club.data
+
+        },
+    }
+}
