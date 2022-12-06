@@ -1,15 +1,11 @@
 import {useState} from 'react';
 import Image from 'next/image'
-
-import Rijen from "../public/img/teams/Rijen.png";
-import GameInformation from "./Game Information";
 import {format} from "date-fns";
 import Link from "next/link";
 const SmallSchedule = ({games, club}) => {
     const [showModal, setShowModal] = useState(false)
     return (
         <div className={`flex items-center justify-center h-screen `}>
-            <GameInformation showModal={showModal} setShowModal={setShowModal}/>
            <table className={`bg-white/90 rounded table-auto border-separate`}>
                <thead className={`text-xs`}>
                <tr >
