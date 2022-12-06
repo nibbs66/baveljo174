@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import axios from "axios";
-import Input from "../../components/Input";
-import Select from "../../components/Select";
-import {addHours, eachHourOfInterval, endOfToday, format, parseISO, startOfToday, subHours, subMinutes} from "date-fns";
+import Input from "../../../components/Input";
+import Select from "../../../components/Select";
+import {format, subHours, subMinutes} from "date-fns";
 const Index = ({oppo, team}) => {
 
     const [inputs, setInputs] = useState({})
@@ -12,41 +12,41 @@ const Index = ({oppo, team}) => {
         {naam: 'Thuis'},
         {naam: 'Uit'}
     ]
-const numbers = [
-    {naam: 1},
-    {naam: 2},
-    {naam: 3},
-    {naam: 4},
-    {naam: 5},
-    {naam: 6},
-    {naam: 7},
-    {naam: 8},
-    {naam: 9},
-    {naam: 10},
-    {naam: 11},
-    {naam: 12},
-    {naam: 13},
-    {naam: 14},
-    {naam: 15},
-    {naam: 16},
-]
+    const numbers = [
+        {naam: 1},
+        {naam: 2},
+        {naam: 3},
+        {naam: 4},
+        {naam: 5},
+        {naam: 6},
+        {naam: 7},
+        {naam: 8},
+        {naam: 9},
+        {naam: 10},
+        {naam: 11},
+        {naam: 12},
+        {naam: 13},
+        {naam: 14},
+        {naam: 15},
+        {naam: 16},
+    ]
     const handleTransport = (data) => {
-      setTrans(prev=>[...prev, data])
+        setTrans(prev=>[...prev, data])
     }
     const handleOpponent = (data) => {
         const selectedTeam = oppo.filter((team) => team.naam === data)
-      setSelected(selectedTeam[0])
+        setSelected(selectedTeam[0])
     }
 
-const handleSubmit = async(e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
-    let verzamelen;
+        let verzamelen;
 
 
 
 
-    const meetingTime = new Date(`${format(new Date(), 'yyyy-MM-dd')} ${inputs.time}`);
-      if(inputs.thuis === 'Thuis'){
+        const meetingTime = new Date(`${format(new Date(), 'yyyy-MM-dd')} ${inputs.time}`);
+        if(inputs.thuis === 'Thuis'){
 
             verzamelen = format(subMinutes(meetingTime, 30), 'H:mm')
         }else if(inputs.thuis === 'Uit'){
@@ -54,16 +54,16 @@ const handleSubmit = async(e) => {
         }
 
         console.log(verzamelen)
-    try{
-           const res = await axios.post(`/api/games`,
-               {...inputs, naam: selected.naam, address: selected.address, verzamelen: verzamelen, city: selected.city, img: selected.img, vervoer: trans}
-               )
+        try{
+            const res = await axios.post(`/api/games`,
+                {...inputs, naam: selected.naam, address: selected.address, verzamelen: verzamelen, city: selected.city, img: selected.img, vervoer: trans}
+            )
 
-    }catch(err){
+        }catch(err){
             console.log(err)
-    }
+        }
 
-}
+    }
 
     return (
         <div className={`h-screen w-full flex items-center justify-center`}>
