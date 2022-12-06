@@ -3,7 +3,12 @@ import Head from 'next/head'
 import Schedule from "../components/Schedule"
 import axios from 'axios'
 import SmallSchedule from "../components/SmallSchedule";
-const Index = ({games, club}) => {
+import useGames from "./api/swr/useGames";
+const Index = () => {
+    const {club, games, isClubValidating, isValidating} =  useGames()
+    if(isClubValidating || isValidating){
+        return <span>Loading...</span>
+    }
     return (
         <div>
             <Head>
