@@ -7,7 +7,7 @@ const Game = ({game, club}) => {
 
     return (
       <main >
-          <div className={`hidden lg:flex h-screen  justify-center items-center py-10`}>
+          <div className={`hidden lg:flex h-screen  justify-center items-center pt-24 `}>
               <Map zoomLevel={17} game={game}  club={club}/>
           </div>
           <div className={` flex min-h-screen  justify-center items-center py-10 lg:hidden `}>
