@@ -34,6 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@heroicons/react", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:2.0.13"],\
+            ["@next-auth/mongodb-adapter", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:1.1.1"],\
             ["@react-google-maps/api", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:2.17.0"],\
             ["@tailwindcss/forms", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:0.5.3"],\
             ["argon2", "npm:0.30.2"],\
@@ -1132,6 +1133,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@next-auth/mongodb-adapter", [\
+        ["npm:1.1.1", {\
+          "packageLocation": "./.yarn/cache/@next-auth-mongodb-adapter-npm-1.1.1-4b85a15c27-1570d3506c.zip/node_modules/@next-auth/mongodb-adapter/",\
+          "packageDependencies": [\
+            ["@next-auth/mongodb-adapter", "npm:1.1.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:1.1.1", {\
+          "packageLocation": "./.yarn/__virtual__/@next-auth-mongodb-adapter-virtual-5b9802303d/0/cache/@next-auth-mongodb-adapter-npm-1.1.1-4b85a15c27-1570d3506c.zip/node_modules/@next-auth/mongodb-adapter/",\
+          "packageDependencies": [\
+            ["@next-auth/mongodb-adapter", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:1.1.1"],\
+            ["@types/mongodb", null],\
+            ["@types/next-auth", null],\
+            ["mongodb", "npm:4.12.1"],\
+            ["next-auth", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:4.18.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/mongodb",\
+            "@types/next-auth",\
+            "mongodb",\
+            "next-auth"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@next/env", [\
         ["npm:13.0.6", {\
           "packageLocation": "./.yarn/cache/@next-env-npm-13.0.6-be9cb9c2aa-89ca41c63d.zip/node_modules/@next/env/",\
@@ -1969,6 +1996,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["baveljo174", "workspace:."],\
             ["@heroicons/react", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:2.0.13"],\
+            ["@next-auth/mongodb-adapter", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:1.1.1"],\
             ["@react-google-maps/api", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:2.17.0"],\
             ["@tailwindcss/forms", "virtual:f58437d1b045fa61505a4bdb6e435c0ee5939a21caa83b072cbfad2a5b61faa6635c34b52f679ecf9428bdfd0a8cb7bf44306e25cd91db28df73bf1c7fdbc98c#npm:0.5.3"],\
             ["argon2", "npm:0.30.2"],\

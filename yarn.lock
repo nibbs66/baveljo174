@@ -985,6 +985,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next-auth/mongodb-adapter@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@next-auth/mongodb-adapter@npm:1.1.1"
+  peerDependencies:
+    mongodb: ^4.1.1
+    next-auth: ^4
+  checksum: 1570d3506ce8859f4c95fb62f5542db7efb942a2b4ed1fdd7e5330b73bf8398f906cb193b4fe594fcff8b863f459699fa0b1030a1bf82c8dc49d0f6e623d4311
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:13.0.6":
   version: 13.0.6
   resolution: "@next/env@npm:13.0.6"
@@ -1647,6 +1657,7 @@ __metadata:
   resolution: "baveljo174@workspace:."
   dependencies:
     "@heroicons/react": ^2.0.13
+    "@next-auth/mongodb-adapter": ^1.1.1
     "@react-google-maps/api": ^2.17.0
     "@tailwindcss/forms": ^0.5.3
     argon2: ^0.30.2
