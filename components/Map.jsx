@@ -94,7 +94,7 @@ const Map = ({zoomLevel, game,  club}) => {
                    <button className={`flex items-center space-x-2 text-white text-xl  leading-none rounded`}><ArrowLeftIcon className={`h-5 w-5`}/>Terug</button>
                </Link>
            </div>
-                <div className={`bg-[ghostwhite] flex justify-center space-x-8 text-slate-500 rounded-md p-2 mb-2`}>
+                <div className={`bg-[ghostwhite] flex justify-center space-x-8 text-slate-500 rounded-md p-2 mb-4`}>
                     <div>
                         {game.thuis === 'Uit' ? <>
                             <div><span><span className={`font-bold`}>Locatie</span>: {game.naam}</span></div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import Input from "../../../components/Input";
 import Select from "../../../components/Select";
 import {format, subHours, subMinutes} from "date-fns";
+import {getSession} from "next-auth/react";
 const Index = ({oppo, team}) => {
 
     const [inputs, setInputs] = useState({})
@@ -88,6 +89,14 @@ const Index = ({oppo, team}) => {
                             />
 
                         </div>
+                        {/*<div className={`flex flex-col space-y-1 text-slate-500`}>
+                            <Select label={'Leeftijd'} data={numbers} name={'team'} naam={'groupLevel'}
+                                    onChange={(e) => setInputs(prev => {
+                                        return {...prev, [e.target.name]: team[0].groupLevel + '-' + e.target.value}
+                                    })}
+                            />
+
+                        </div>*/}
                         <div className={`flex flex-col space-y-1 text-slate-500`}>
                             <Select label={team[0].groupLevel} data={numbers} name={'team'} onChange={(e)=>  setInputs(prev=>{
                                 return {...prev, [e.target.name]: team[0].groupLevel+'-'+e.target.value} })}
@@ -143,6 +152,15 @@ const Index = ({oppo, team}) => {
 
 export default Index;
 export async function getServerSideProps(ctx) {
+    const session = await getSession(ctx)
+    if(!session){
+        return{
+            redirect: {
+                destination: "/admin",
+                permanent: false,
+            }
+        }
+    }
     const host = ctx.req.headers.host;
     const res = await axios.get(`http://`+host+`/api/opponents`)
     const team = await axios.get(`http://`+host+`/api/age_group`)
