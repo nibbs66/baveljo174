@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
         backgroundImage: {
-            'bgImg': "url('../public/img/bavelLogo.png')",
+            'bgImg': "url('https://logoapi.voetbal.nl/logo.php?clubcode=BBJH113')",
         },
 
     },
