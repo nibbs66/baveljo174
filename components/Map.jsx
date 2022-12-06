@@ -116,7 +116,20 @@ const Map = ({zoomLevel, game,  club}) => {
                         {game.thuis === 'Uit' && <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>}
                     </div>
                     <div>
-                        {game.vervoer?.length > 0 && <div><span className={`font-bold`}>Vervoer:</span> <span> {game.vervoer}</span></div>}
+                        {game.vervoer.length > 0 ?
+                            <>
+                                <span className={`font-bold`}>Vervoer:</span> {
+                                game.vervoer.map((ver, idx) => (
+                                    (<span key={idx}>
+                                {ver},{' '}
+                            </span>)
+                                ))
+                            }
+                            </>
+                            : game.thuis === 'Thuis' ? null :<span> <span className={`font-bold`}>Vervoer: </span>
+                        Fiets
+                            </span>}
+
                         <div><span className={`font-bold`}>Vlaggen:</span> <span>{game.vlaggen}</span></div>
                     </div>
                 </div>

@@ -15,6 +15,9 @@ const HomeClubSchema = new mongoose.Schema(
         img: {
             type: String
         },
+        team: {
+            type: [{naam: {type: String}}]
+        }
 
     },
 

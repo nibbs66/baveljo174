@@ -14,7 +14,7 @@ const GameSchema = new mongoose.Schema(
         img: {
             type: String
         },
-
+        club: {type: String},
 
         field: {
             type: String,
@@ -30,10 +30,10 @@ const GameSchema = new mongoose.Schema(
         verzamelen: {type: String},
 
         vervoer: {
-            type: [Number]
+            type: [String]
       },
       vlaggen: {
-            type: Number
+            type: String
       },
 
 

@@ -44,7 +44,12 @@ const TableRow = ({club, games}) => {
 
                     </td>
                     <td  className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>
-                        {game.thuis ? 'NA' : game.vervoer.length === 0 ? 'Fiets' : game.vervoer}
+                        {game.vervoer.length > 0 ? game.vervoer.map((ver, idx)=>(
+                            <span key={idx}>
+                                {ver},{' '}
+                            </span>
+                        )) : game.thuis === 'Thuis' ? 'NVT' :  'Fiets'}
+
                     </td>
 
                     <td  className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>{game.vlaggen}</td>

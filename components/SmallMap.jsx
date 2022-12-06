@@ -77,7 +77,7 @@ const SmallMap = ({zoomLevel, game, club}) => {
 
     }
     return (
-        <div className={`flex flex-col  items-center bg-[#00763b]/50 py-10 px-2 mx-4  w-full rounded-lg drop-shadow-2xl space-y-10 overflow-scroll`}>
+        <div className={`flex flex-col   items-center bg-[#00763b]/50 py-10 px-2 mx-4  w-full rounded-lg drop-shadow-2xl space-y-10 overflow-scroll`}>
              <Link href={`/`}>
                  <button className={`flex items-center space-x-2 text-white  leading-none rounded`}><ArrowLeftIcon className={`h-3 w-3`}/>Terug</button>
              </Link>
@@ -87,21 +87,33 @@ const SmallMap = ({zoomLevel, game, club}) => {
                             <div><span><span className={`font-bold`}>Locatie</span>: {game.naam}</span></div>
                             <div><span><span className={`font-bold`}>Adres</span>: {game.address}{' '}{game.city}</span>
                             </div>
-                            <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} uur</span></div>
+                            <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} </span></div>
                         </> :
                         <>
                             <div><span><span className={`font-bold`}>Locatie</span>: {club[0].naam}</span></div>
                             <div><span><span className={`font-bold`}>Adres</span>: {club[0].address}{' '}{club[0].city}</span></div>
-                            <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} uur</span></div>
+                            <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} </span></div>
                         </>
                     }
                 </div>
                 <div>
 
-                    <div><span><span className={`font-bold`}>Verzamelen</span>: {game.verzamelen} uur</span></div>
+                    <div><span><span className={`font-bold`}>Verzamelen</span>: {game.verzamelen} </span></div>
                     {game.thuis === 'Uit' && <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>}
                     <div>
-                        {game.vervoer?.length > 0 && <div><span className={`font-bold`}>Vervoer:</span> <span> {game.vervoer}</span></div>}
+                        {game.vervoer.length > 0 ?
+                            <>
+                                <span className={`font-bold`}>Vervoer:</span> {
+                                game.vervoer.map((ver, idx) => (
+                                    (<span key={idx}>
+                                {ver},{' '}
+                            </span>)
+                                ))
+                            }
+                            </>
+                            : game.thuis === 'Thuis' ? null :<span> <span className={`font-bold`}>Vervoer: </span>
+                        Fiets
+                            </span>}
                         <div><span className={`font-bold`}>Vlaggen:</span> <span>{game.vlaggen}</span></div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ import Input from "../../../components/Input";
 import Select from "../../../components/Select";
 import {format, subHours, subMinutes} from "date-fns";
 import {getSession} from "next-auth/react";
-const Index = ({oppo, team}) => {
+const Index = ({oppo, team, club}) => {
 
     const [inputs, setInputs] = useState({})
     const [trans, setTrans] = useState([])
@@ -54,10 +54,10 @@ const Index = ({oppo, team}) => {
             verzamelen = format(subHours(meetingTime, 1), 'H:mm')
         }
 
-        console.log(verzamelen)
+
         try{
             const res = await axios.post(`/api/games`,
-                {...inputs, naam: selected.naam, address: selected.address, verzamelen: verzamelen, city: selected.city, img: selected.img, vervoer: trans}
+                {...inputs, naam: selected.naam, address: selected.address, verzamelen: verzamelen, city: selected.city, club: selected.club, img: selected.img, vervoer: trans}
             )
 
         }catch(err){
@@ -121,7 +121,7 @@ const Index = ({oppo, team}) => {
                         </div>
 
                         <div className={`flex flex-col space-y-1 text-slate-500`}>
-                            <Select label={`Vlaggen`} data={numbers} name={'vlaggen'} onChange={(e)=>  setInputs(prev=>{
+                            <Select label={`Vlaggen`} data={club[0].team} name={'vlaggen'} onChange={(e)=>  setInputs(prev=>{
                                 return {...prev, [e.target.name]: e.target.value} })}
                             />
                         </div>
@@ -131,7 +131,7 @@ const Index = ({oppo, team}) => {
 
                     <div className={`flex w-full`}>
                         <div className={`flex flex-col space-y-1 text-slate-500`}>
-                            <Select label={`Vervoer`} data={numbers} multiple={true} name={'vervoer'} onChange={(e)=>handleTransport(e.target.value)}
+                            <Select label={`Vervoer`} data={club[0].team} multiple={true} name={'vervoer'} onChange={(e)=>handleTransport(e.target.value)}
                             />
 
 
@@ -164,13 +164,15 @@ export async function getServerSideProps(ctx) {
     const host = ctx.req.headers.host;
     const res = await axios.get(`http://`+host+`/api/opponents`)
     const team = await axios.get(`http://`+host+`/api/age_group`)
+    const club = await axios.get(`http://`+host+`/api/club`)
 
 
 
     return {
         props: {
             oppo: res.data,
-            team: team.data
+            team: team.data,
+            club: club.data
         },
     }
 }
