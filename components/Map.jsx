@@ -34,7 +34,7 @@ const Map = ({zoomLevel, game,  club}) => {
             if(game.thuis === "Uit"){
                 address = `${game.address}`+`${game.city}`
             }else{
-                address = `${club[0].address}`+`${club[0].city}`
+                address = `${club[0]?.address}`+`${club[0]?.city}`
             }
         //const bounds = new window.google.maps.LatLngBounds(center);
         await geocoder.geocode({'address': address}, function(res,status){
@@ -103,8 +103,8 @@ const Map = ({zoomLevel, game,  club}) => {
                             <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} uur</span></div>
                         </> :
                             <>
-                                <div><span><span className={`font-bold`}>Locatie</span>: {club[0].naam}</span></div>
-                                <div><span><span className={`font-bold`}>Adres</span>: {club[0].address}{' '}{club[0].city}</span></div>
+                                <div><span><span className={`font-bold`}>Locatie</span>: {club[0]?.naam}</span></div>
+                                <div><span><span className={`font-bold`}>Adres</span>: {club[0]?.address}{' '}{club[0]?.city}</span></div>
                                 <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} uur</span></div>
                             </>
                         }
