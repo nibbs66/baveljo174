@@ -99,7 +99,7 @@ const SmallMap = ({zoomLevel, game, club}) => {
                 <div>
 
                     <div><span><span className={`font-bold`}>Verzamelen</span>: {game.verzamelen} uur</span></div>
-                    <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>
+                    {game.thuis === 'Uit' && <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>}
                     <div>
                         {game.vervoer?.length > 0 && <div><span className={`font-bold`}>Vervoer:</span> <span> {game.vervoer}</span></div>}
                         <div><span className={`font-bold`}>Vlaggen:</span> <span>{game.vlaggen}</span></div>
