@@ -22,8 +22,8 @@ export const getServerSideProps = async (ctx) =>{
 
     const host = ctx.req.headers.host;
 console.log(ctx.params.id)
-            const res = await axios.get(`https://`+host+`/api/games?game=${ctx.params.id}`)
-            const club = await axios.get(`https://`+host+`/api/club`)
+            const res = await axios.get(`http://`+host+`/api/games?game=${ctx.params.id}`)
+            const club = await axios.get(`http://`+host+`/api/club`)
         return{
             props:{
                 game: res.data,

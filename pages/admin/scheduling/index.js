@@ -144,8 +144,8 @@ const Index = ({oppo, team}) => {
 export default Index;
 export async function getServerSideProps(ctx) {
     const host = ctx.req.headers.host;
-    const res = await axios.get(`https://`+host+`/api/opponents`)
-    const team = await axios.get(`https://`+host+`/api/age_group`)
+    const res = await axios.get(`http://`+host+`/api/opponents`)
+    const team = await axios.get(`http://`+host+`/api/age_group`)
 
 
 
