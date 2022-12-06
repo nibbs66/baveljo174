@@ -3,13 +3,17 @@ import Header from "../Header";
 
 const Layout = ({children}) => {
     return (
-        <div className={`relative bg-bgImg  bg-[#00763b]/70 bg-fixed bg-center bg-contain  bg-no-repeat `}>
-            <Header/>
-            <main>
-                {children}
-            </main>
+      <div className={`relative`}>
+          <div className={` bg-bgImg  bg-[#00763b]/70 bg-fixed bg-center bg-contain  bg-no-repeat `}>
+             <div className={`relative z-20`}>
+                 <Header/>
+             </div>
+              <main>
+                  {children}
+              </main>
 
-        </div>
+          </div>
+      </div>
     );
 };
 

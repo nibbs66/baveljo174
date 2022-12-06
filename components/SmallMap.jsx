@@ -77,11 +77,11 @@ const SmallMap = ({zoomLevel, game, club}) => {
 
     }
     return (
-        <div className={`flex flex-col items-center bg-[#00763b]/50 p-10 mx-10 w-full rounded-lg drop-shadow-2xl space-y-10`}>
+        <div className={`flex flex-col  items-center bg-[#00763b]/50 p-10 mx-10 w-full rounded-lg drop-shadow-2xl space-y-10 overflow-scroll`}>
              <Link href={`/`}>
                  <button className={`flex items-center space-x-2 text-white  leading-none rounded`}><ArrowLeftIcon className={`h-3 w-3`}/>Terug</button>
              </Link>
-            <div className={`bg-[ghostwhite] flex space-x-4  w-full items-center  md:justify-center md:text-base text-xs  text-slate-500 rounded-md p-2 mb-2`}>
+            <div className={`bg-[ghostwhite] flex space-x-4 w-full  md:w-3/4 items-center  md:justify-center md:text-base text-xs  text-slate-500 rounded-md p-2 mb-2`}>
                 <div>
                     {game.thuis === 'Uit' ? <>
                             <div><span><span className={`font-bold`}>Locatie</span>: {game.naam}</span></div>

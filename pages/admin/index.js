@@ -70,7 +70,7 @@ const Login = () => {
             <div className={`flex flex-col w-full items-center `}>
 
 
-                <form className={`flex flex-col items-center gap-4 w-1/3 py-10 md:border rounded-md md:shadow-xl bg-[ghostwhite] text-slate-400`} onSubmit={handleSubmit(onSubmit)}>
+                <form className={`flex flex-col items-center gap-4 w-3/4 lg:w-1/3 py-10 md:border rounded-md md:shadow-xl bg-[ghostwhite] text-slate-400`} onSubmit={handleSubmit(onSubmit)}>
                    <div className={`flex flex-col`}>
                         <label className={`px-1 ${errors.email && 'text-red-500 font-bold'}`}
                                htmlFor="email">Email</label>

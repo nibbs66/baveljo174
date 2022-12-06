@@ -6,14 +6,14 @@ import axios from "axios";
 const Game = ({game, club}) => {
 
     return (
-      <>
-          <div className={`hidden md:flex h-screen  justify-center items-center py-10`}>
-             <Map zoomLevel={17} game={game}  club={club}/>
+      <main >
+          <div className={`hidden lg:flex h-screen  justify-center items-center py-10`}>
+              <Map zoomLevel={17} game={game}  club={club}/>
           </div>
-          <div className={` flex h-screen  justify-center items-center py-10 md:hidden`}>
+          <div className={` flex min-h-screen  justify-center items-center py-10 lg:hidden `}>
              <SmallMap zoomLevel={17} game={game} club={club}/>
           </div>
-      </>
+      </main>
     );
 };
 
