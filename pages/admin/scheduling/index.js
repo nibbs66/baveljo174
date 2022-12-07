@@ -9,8 +9,9 @@ import {ArrowLeftIcon} from "@heroicons/react/24/outline";
 import Opponents from "../../../components/Opponents";
 import Vlaggen from "../../../components/Vlaggen";
 import Vervoer from "../../../components/Vervoer";
-import useClub from '../../../pages/api/swr/useClub'
-const Index = ({ team}) => {
+import Loader from "../../../components/Loader";
+
+const Index = () => {
     const {data: session, loading} = useSession()
     const [inputs, setInputs] = useState({})
     const [trans, setTrans] = useState([])
@@ -86,7 +87,11 @@ const Index = ({ team}) => {
 
     }
     if(loading){
-        return loading
+        return (
+            <div className={`flex h-screen w-screen bg-white items-center justify-center`}>
+                <span><Loader/></span>
+            </div>
+        )
     }
     if(!loading && !session){
         return (
@@ -140,8 +145,8 @@ const Index = ({ team}) => {
 
                         </div>*/}
                               <div className={`flex flex-col space-y-1 text-slate-500`}>
-                                  <Select label={team[0].groupLevel} data={numbers} name={'team'} onChange={(e)=>  setInputs(prev=>{
-                                      return {...prev, [e.target.name]: team[0].groupLevel+'-'+e.target.value} })}
+                                  <Select label={'JO17'} data={numbers} name={'team'} onChange={(e)=>  setInputs(prev=>{
+                                      return {...prev, [e.target.name]: 'JO17'+'-'+e.target.value} })}
                                   />
 
                               </div>
@@ -197,19 +202,3 @@ const Index = ({ team}) => {
 };
 
 export default Index;
-export async function getServerSideProps(ctx) {
-
-    const host = ctx.req.headers.host;
-    const team = await axios.get(`http://`+host+`/api/age_group`)
-
-
-
-
-    return {
-        props: {
-
-            team: team.data,
-
-        },
-    }
-}
