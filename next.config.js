@@ -7,7 +7,9 @@ module.exports = {
             "res.cloudinary.com",
             'icon-library.com',
             "firebasestorage.googleapis.com",
-            "logoapi.voetbal.nl"
+            "logoapi.voetbal.nl",
+            "website.storage",
+            "www.vvrijsbergen.nl"
         ]
 
     },
