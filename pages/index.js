@@ -5,7 +5,7 @@ import axios from 'axios'
 import SmallSchedule from "../components/SmallSchedule";
 import useGames from "./api/swr/useGames";
 const Index = () => {
-    const {club, games, isClubValidating, isValidating} =  useGames()
+    const { games, isClubValidating, isValidating} =  useGames()
     if(isClubValidating || isValidating){
         return <span>Loading...</span>
     }
@@ -17,10 +17,10 @@ const Index = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={`hidden lg:flex md:items-center md:justify-center h-screen w-full`}>
-               <Schedule  games={games} club={club}/>
+               <Schedule  games={games} />
             </div>
             <div className={`h-screen w-full lg:hidden`}>
-                <SmallSchedule  games={games} club={club}/>
+                <SmallSchedule  games={games} />
             </div>
 
         </div>
@@ -28,16 +28,3 @@ const Index = () => {
 };
 
 export default Index;
-export async function getServerSideProps(ctx) {
-    const host = ctx.req.headers.host;
-    const res = await axios.get(`http://`+host+`/api/games`);
-    const club = await axios.get(`http://`+host+`/api/club`);
-
-    return {
-        props: {
-            games: res.data,
-            club: club.data
-
-        },
-    }
-}

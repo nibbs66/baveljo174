@@ -2,8 +2,8 @@ import {useState} from 'react';
 import Image from 'next/image'
 import {format} from "date-fns";
 import Link from "next/link";
-const SmallSchedule = ({games, club}) => {
-    const [showModal, setShowModal] = useState(false)
+const SmallSchedule = ({games}) => {
+
     return (
         <div className={`flex items-center justify-center h-screen `}>
            <table className={`bg-white/90 rounded table-auto border-separate`}>

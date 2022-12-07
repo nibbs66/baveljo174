@@ -37,7 +37,7 @@ const TableRow = ({club, games}) => {
                           {game.thuis}
                         </span>
                     </td>
-                    <td className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>{game?.thuis ==='Thuis' ? club[0]?.club : game.club}</td>
+                    <td className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>{game?.thuis ==='Thuis' ? club : game.club}</td>
                     <td className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>
 
                             {game.verzamelen} uur<span className="sr-only"></span>

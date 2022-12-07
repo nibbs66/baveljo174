@@ -3,11 +3,11 @@ import axios from "axios";
 import Input from "../../../components/Input";
 import Select from "../../../components/Select";
 import {format, subHours, subMinutes} from "date-fns";
-import {getSession} from "next-auth/react";
+import {useSession} from "next-auth/react";
 import Link from "next/link";
 import {ArrowLeftIcon} from "@heroicons/react/24/outline";
 const Index = ({oppo, team, club}) => {
-
+    const {data: session, loading} = useSession()
     const [inputs, setInputs] = useState({})
     const [trans, setTrans] = useState([])
     const [selected, setSelected] = useState({})
@@ -67,7 +67,20 @@ const Index = ({oppo, team, club}) => {
         }
 
     }
+    if(loading){
+        return loading
+    }
+    if(!loading && !session){
+        return (
+            <div className={`flex flex-col h-screen w-screen items-center justify-center`}>
+                <span className={`text-3xl bont-bold`}>Access Denied</span>
+                <Link href={`/admin`}>
+                    <button className={`text-white bg-blue-500 leading-none py-2 px-3 rounderd`}>Login</button>
+                </Link>
 
+            </div>
+        )
+    }
     return (
 
 
@@ -164,15 +177,15 @@ const Index = ({oppo, team, club}) => {
 
 export default Index;
 export async function getServerSideProps(ctx) {
-    const session = await getSession(ctx)
-    if(!session){
+    //const session = await getSession(ctx)
+    /*if(!session){
         return{
             redirect: {
                 destination: "/admin",
                 permanent: false,
             }
         }
-    }
+    }*/
     const host = ctx.req.headers.host;
     const res = await axios.get(`http://`+host+`/api/opponents`)
     const team = await axios.get(`http://`+host+`/api/age_group`)
