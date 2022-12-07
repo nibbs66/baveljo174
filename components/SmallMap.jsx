@@ -38,7 +38,7 @@ const SmallMap = ({zoomLevel, game, club}) => {
         })
         map.setZoom(zoomLevel)
         setMap(map)
-    },[])
+    },[club, game, zoomLevel])
 
     const onUnmount = useCallback(function callback(){
         setMap(null)
