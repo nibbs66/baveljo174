@@ -4,10 +4,15 @@ import Schedule from "../components/Schedule"
 import axios from 'axios'
 import SmallSchedule from "../components/SmallSchedule";
 import useGames from "./api/swr/useGames";
+import Loader from "../components/Loader";
 const Index = () => {
-    const { games, isClubValidating, isValidating} =  useGames()
-    if(isClubValidating || isValidating){
-        return <span>Loading...</span>
+    const { games, isValidating} =  useGames()
+    if( isValidating){
+        return (
+            <div className={`flex h-screen w-screen bg-white items-center justify-center`}>
+                <span><Loader/></span>
+            </div>
+        )
     }
     return (
         <div>

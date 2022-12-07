@@ -3,6 +3,7 @@ import useGames from '../pages/api/swr/useGames'
 import {format} from "date-fns";
 import { useSession, signOut } from "next-auth/react"
 import Button from "./Button";
+import Loader from "./Loader";
 
 const Header = () => {
     const {data: session} = useSession()
@@ -10,7 +11,11 @@ const Header = () => {
 
 
     if(isValidating){
-        return <span>Loading...</span>
+        return (
+            <div className={`flex  bg-white items-center justify-center`}>
+                <span><Loader/></span>
+            </div>
+        )
     }
 
     return (

@@ -18,7 +18,6 @@ const GameSchema = new mongoose.Schema(
 
         field: {
             type: String,
-
         },
 
         thuis: {

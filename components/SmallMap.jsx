@@ -3,6 +3,7 @@ import {useState, useCallback, useEffect} from 'react';
 import {GoogleMap, DirectionsService, useLoadScript, DirectionsRenderer} from '@react-google-maps/api';
 import {ArrowLeftIcon} from '@heroicons/react/24/outline'
 import Link from "next/link";
+import Loader from "./Loader";
 const containerStyle = {
     width: '350px',
     height: '350px'
@@ -46,9 +47,7 @@ const SmallMap = ({zoomLevel, game, club}) => {
         setOrigin('')
         setDestination('')
     }, [])
-    if(!isLoaded){
-        return <span>Loading...</span>
-    }
+
     const directionsCallback = (res) => {
         console.log(res)
 
@@ -75,6 +74,13 @@ const SmallMap = ({zoomLevel, game, club}) => {
         setOrigin('Deken Dr. Dirckxweg 4 Bavel')
         setDestination('Sportparkweg 4 Rijen')
 
+    }
+    if(!isLoaded){
+        return (
+            <div className={`flex h-screen w-screen bg-white items-center justify-center`}>
+                <span><Loader/></span>
+            </div>
+        )
     }
     return (
         <div className={`flex flex-col   items-center bg-[#00763b]/50 py-10 px-2 mx-4  w-full rounded-lg drop-shadow-2xl space-y-10 overflow-scroll`}>

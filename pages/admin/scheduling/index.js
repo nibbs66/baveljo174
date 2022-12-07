@@ -9,6 +9,7 @@ import {ArrowLeftIcon} from "@heroicons/react/24/outline";
 import Opponents from "../../../components/Opponents";
 import Vlaggen from "../../../components/Vlaggen";
 import Vervoer from "../../../components/Vervoer";
+import useClub from '../../../pages/api/swr/useClub'
 const Index = ({ team}) => {
     const {data: session, loading} = useSession()
     const [inputs, setInputs] = useState({})
@@ -36,9 +37,11 @@ const Index = ({ team}) => {
         {naam: 15},
         {naam: 16},
     ]
+
     const handleTransport = (data) => {
         setTrans(prev=>[...prev, data])
     }
+
     const handleOpponent = (oppo, data) => {
         const selectedTeam = oppo.filter((team) => team.naam === data)
         setSelected(selectedTeam[0])
@@ -46,23 +49,35 @@ const Index = ({ team}) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+
         let verzamelen;
-
-
-
+        let address;
+        let city;
+        let club;
 
         const meetingTime = new Date(`${format(new Date(), 'yyyy-MM-dd')} ${inputs.time}`);
         if(inputs.thuis === 'Thuis'){
-
             verzamelen = format(subMinutes(meetingTime, 30), 'H:mm')
+                try{
+                const res = await axios.get(`/api/club`)
+                    address = res.data[0].address
+                    city = res.data[0].city
+                    club = res.data[0].club
+                }catch(err){
+                console.log(err)
+                }
         }else if(inputs.thuis === 'Uit'){
             verzamelen = format(subHours(meetingTime, 1), 'H:mm')
+            address = selected.address
+            city = selected.city
+            club = selected.club
+
         }
 
 
         try{
             const res = await axios.post(`/api/games`,
-                {...inputs, naam: selected.naam, address: selected.address, verzamelen: verzamelen, city: selected.city, club: selected.club, img: selected.img, vervoer: trans}
+                {...inputs, naam: selected.naam, address: address, verzamelen: verzamelen, city: city, club: club, img: selected.img, vervoer: trans}
             )
 
         }catch(err){
@@ -84,7 +99,7 @@ const Index = ({ team}) => {
             </div>
         )
     }
-    console.log(trans)
+
     return (
 
 

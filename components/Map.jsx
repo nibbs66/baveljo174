@@ -4,6 +4,7 @@ import {GoogleMap, useLoadScript} from '@react-google-maps/api';
 import Link from "next/link";
 import {ArrowLeftIcon} from "@heroicons/react/24/outline";
 import axios from "axios";
+import Loader from "./Loader";
 
 
 
@@ -12,7 +13,7 @@ const containerStyle = {
     height: '400px'
 };
 
-const Map = ({zoomLevel, game,  club}) => {
+const Map = ({zoomLevel, game, club  }) => {
 
     const { isLoaded, loadError } = useLoadScript({
         id: 'google-map-script',
@@ -30,12 +31,9 @@ const Map = ({zoomLevel, game,  club}) => {
 
     const onLoad =  useCallback (async function callback(map) {
         const geocoder =  new google.maps.Geocoder()
-        let address;
-            if(game.thuis === "Uit"){
-                address = `${game.address}`+`${game.city}`
-            }else{
-                address = `${club[0]?.address}`+`${club[0]?.city}`
-            }
+
+        const address = `${game.address}`+`${game.city}`
+
         //const bounds = new window.google.maps.LatLngBounds(center);
         await geocoder.geocode({'address': address}, function(res,status){
             if(status === 'OK'){
@@ -84,7 +82,11 @@ const Map = ({zoomLevel, game,  club}) => {
 
     }
     if(!isLoaded){
-        return <span>Loading...</span>
+        return (
+            <div className={`flex h-screen w-screen bg-white items-center justify-center`}>
+                <span><Loader/></span>
+            </div>
+        )
     }
     console.log(game.time)
     return (
@@ -96,18 +98,11 @@ const Map = ({zoomLevel, game,  club}) => {
            </div>
                 <div className={`bg-[ghostwhite] flex justify-center space-x-8 text-slate-500 rounded-md p-2 mb-4`}>
                     <div>
-                        {game.thuis === 'Uit' ? <>
-                            <div><span><span className={`font-bold`}>Locatie</span>: {game.naam}</span></div>
+
+                            <div><span><span className={`font-bold`}>Locatie</span>: {game.club}</span></div>
                             <div><span><span className={`font-bold`}>Adres</span>: {game.address}{' '}{game.city}</span>
                             </div>
                             <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} uur</span></div>
-                        </> :
-                            <>
-                                <div><span><span className={`font-bold`}>Locatie</span>: {club[0]?.naam}</span></div>
-                                <div><span><span className={`font-bold`}>Adres</span>: {club[0]?.address}{' '}{club[0]?.city}</span></div>
-                                <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} uur</span></div>
-                            </>
-                        }
 
                     </div>
                     <div>

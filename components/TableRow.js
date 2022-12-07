@@ -20,8 +20,8 @@ const TableRow = ({club, games}) => {
                     </td>
                     <td key={games._id} className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                         <div className="h-12 w-full flex-shrink-0 flex flex-col align-middle items-center whitespace-nowrap">
-                            <div className={` h-12 w-12`}>
-                                <Image className={` rounded-full object-contain `} src={game.img} height={50} width={50}  alt="" />
+                            <div className={` h-10 `}>
+                                <Image className={` rounded-full object-contain `} src={game.img} height={40} width={40}  alt="" />
                             </div>
 
                         </div>
@@ -37,7 +37,7 @@ const TableRow = ({club, games}) => {
                           {game.thuis}
                         </span>
                     </td>
-                    <td className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>{game?.thuis ==='Thuis' ? club : game.club}</td>
+                    <td className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>{ game.club }</td>
                     <td className={` align-middle text-center  text-slate-700 font-semibold text-sm whitespace-nowrap px-2`}>
 
                             {game.verzamelen} uur<span className="sr-only"></span>

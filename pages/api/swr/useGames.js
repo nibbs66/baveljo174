@@ -4,8 +4,8 @@ import {endOfWeek, format} from "date-fns";
 
 export default function useRegister (){
 
-    const {data: games, error, isValidating,  mutate} = useSWR( `/api/games/`, fetcher)
-    const {data: club, error: clubError, isValidating: isClubValidating} = useSWR( `/api/club/`, fetcher)
+    const {data: games, error, isValidating,  mutate} = useSWR( `/api/games/`, fetcher, {focusThrottleInterval: 10000})
+
 const nextGame = games?.filter((game)=>format(new Date(game.datum), 'dd MMM yyyy') === format(endOfWeek(new Date()), 'dd MMM yyyy'))
 
     return{
@@ -14,8 +14,5 @@ const nextGame = games?.filter((game)=>format(new Date(game.datum), 'dd MMM yyyy
         error,
         isValidating,
         mutate,
-        club,
-        clubError,
-        isClubValidating
     }
 }
