@@ -174,9 +174,9 @@ export async function getServerSideProps(ctx) {
         }
     }
     const host = ctx.req.headers.host;
-    const res = await axios.get(`http://`+host+`/api/opponents`)
-    const team = await axios.get(`http://`+host+`/api/age_group`)
-    const club = await axios.get(`http://`+host+`/api/club`)
+    const res = await axios.get(`https://`+host+`/api/opponents`)
+    const team = await axios.get(`https://`+host+`/api/age_group`)
+    const club = await axios.get(`https://`+host+`/api/club`)
 
 
 

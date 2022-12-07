@@ -30,8 +30,8 @@ const Index = () => {
 export default Index;
 export async function getServerSideProps(ctx) {
     const host = ctx.req.headers.host;
-    const res = await axios.get(`http://`+host+`/api/games`);
-    const club = await axios.get(`http://`+host+`/api/club`);
+    const res = await axios.get(`https://`+host+`/api/games`);
+    const club = await axios.get(`https://`+host+`/api/club`);
 
     return {
         props: {
