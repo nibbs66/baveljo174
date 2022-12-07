@@ -6,7 +6,10 @@ import {format, subHours, subMinutes} from "date-fns";
 import {useSession} from "next-auth/react";
 import Link from "next/link";
 import {ArrowLeftIcon} from "@heroicons/react/24/outline";
-const Index = ({oppo, team, club}) => {
+import Opponents from "../../../components/Opponents";
+import Vlaggen from "../../../components/Vlaggen";
+import Vervoer from "../../../components/Vervoer";
+const Index = ({ team}) => {
     const {data: session, loading} = useSession()
     const [inputs, setInputs] = useState({})
     const [trans, setTrans] = useState([])
@@ -36,7 +39,7 @@ const Index = ({oppo, team, club}) => {
     const handleTransport = (data) => {
         setTrans(prev=>[...prev, data])
     }
-    const handleOpponent = (data) => {
+    const handleOpponent = (oppo, data) => {
         const selectedTeam = oppo.filter((team) => team.naam === data)
         setSelected(selectedTeam[0])
     }
@@ -81,6 +84,7 @@ const Index = ({oppo, team, club}) => {
             </div>
         )
     }
+    console.log(trans)
     return (
 
 
@@ -108,7 +112,7 @@ const Index = ({oppo, team, club}) => {
 
                               </div>
                               <div className={`flex flex-col space-y-1 text-slate-500`}>
-                                  <Select label={`Tegenstander`} name={'naam'} data={oppo}  onChange={(e)=>handleOpponent(e.target.value)}
+                                  <Opponents label={`Tegenstander`} name={'naam'}   onChange={handleOpponent}
                                   />
 
                               </div>
@@ -144,9 +148,12 @@ const Index = ({oppo, team, club}) => {
                               </div>
 
                               <div className={`flex flex-col space-y-1 text-slate-500`}>
-                                  <Select label={`Vlaggen`} data={club[0].team} name={'vlaggen'} onChange={(e)=>  setInputs(prev=>{
+                                  <Vlaggen
+                                      label={`Vlaggen`}  name={'vlaggen'} onChange={(e)=>  setInputs(prev=>{
                                       return {...prev, [e.target.name]: e.target.value} })}
+
                                   />
+
                               </div>
 
 
@@ -154,11 +161,10 @@ const Index = ({oppo, team, club}) => {
 
                           <div className={`flex w-full`}>
                               <div className={`flex flex-col space-y-1 text-slate-500`}>
-                                  <Select label={`Vervoer`} data={club[0].team} multiple={true} name={'vervoer'} onChange={(e)=>handleTransport(e.target.value)}
+                                  <Vervoer
+                                      label={`Vervoer`}  name={'vervoer'} onChange={(e)=>handleTransport(e.target.value)}
+
                                   />
-
-
-
                               </div>
                           </div>
                       </div>
@@ -177,27 +183,18 @@ const Index = ({oppo, team, club}) => {
 
 export default Index;
 export async function getServerSideProps(ctx) {
-    //const session = await getSession(ctx)
-    /*if(!session){
-        return{
-            redirect: {
-                destination: "/admin",
-                permanent: false,
-            }
-        }
-    }*/
+
     const host = ctx.req.headers.host;
-    const res = await axios.get(`http://`+host+`/api/opponents`)
     const team = await axios.get(`http://`+host+`/api/age_group`)
-    const club = await axios.get(`http://`+host+`/api/club`)
+
 
 
 
     return {
         props: {
-            oppo: res.data,
+
             team: team.data,
-            club: club.data
+
         },
     }
 }
