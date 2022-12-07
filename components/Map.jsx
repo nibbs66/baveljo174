@@ -3,7 +3,7 @@ import {useState, useCallback, useEffect} from 'react';
 import {GoogleMap, useLoadScript} from '@react-google-maps/api';
 import Link from "next/link";
 import {ArrowLeftIcon} from "@heroicons/react/24/outline";
-import axios from "axios";
+
 import Loader from "./Loader";
 
 
@@ -13,7 +13,7 @@ const containerStyle = {
     height: '400px'
 };
 
-const Map = ({zoomLevel, game, club  }) => {
+const Map = ({zoomLevel, game  }) => {
 
     const { isLoaded, loadError } = useLoadScript({
         id: 'google-map-script',
@@ -43,7 +43,7 @@ const Map = ({zoomLevel, game, club  }) => {
         })
         map.setZoom(zoomLevel)
         setMap(map)
-    },[club, game, zoomLevel])
+    },[ game, zoomLevel])
 
     const onUnmount = useCallback(function callback(){
         setMap(null)
@@ -88,7 +88,7 @@ const Map = ({zoomLevel, game, club  }) => {
             </div>
         )
     }
-    console.log(game.time)
+
     return (
         <div className={` bg-[#00763b]/80 p-10 rounded-lg drop-shadow-2xl`}>
            <div className={`flex justify-center py-4`}>
@@ -108,7 +108,7 @@ const Map = ({zoomLevel, game, club  }) => {
                     <div>
 
                         <div><span><span className={`font-bold`}>Verzamelen</span>: {game.verzamelen} uur</span></div>
-                        {game.thuis === 'Uit' && <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>}
+                        {game.thuis === 'Uit' && game.vervoer.length > 0 && <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>}
                     </div>
                     <div>
                         {game.vervoer.length > 0 ?

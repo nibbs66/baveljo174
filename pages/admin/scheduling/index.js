@@ -55,7 +55,7 @@ const Index = () => {
         let address;
         let city;
         let club;
-
+        console.log(inputs)
         const meetingTime = new Date(`${format(new Date(), 'yyyy-MM-dd')} ${inputs.time}`);
         if(inputs.thuis === 'Thuis'){
             verzamelen = format(subMinutes(meetingTime, 30), 'H:mm')
@@ -67,7 +67,12 @@ const Index = () => {
                 }catch(err){
                 console.log(err)
                 }
-        }else if(inputs.thuis === 'Uit'){
+        } else if(inputs.thuis === 'Uit' && trans.length === 0){
+            verzamelen = format(subMinutes(meetingTime, 30), 'H:mm')
+            address = selected.address
+            city = selected.city
+            club = selected.club
+        } else if(inputs.thuis === 'Uit'){
             verzamelen = format(subHours(meetingTime, 1), 'H:mm')
             address = selected.address
             city = selected.city
@@ -86,6 +91,7 @@ const Index = () => {
         }
 
     }
+    console.log(trans.length)
     if(loading){
         return (
             <div className={`flex h-screen w-screen bg-white items-center justify-center`}>

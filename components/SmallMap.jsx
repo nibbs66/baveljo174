@@ -8,7 +8,7 @@ const containerStyle = {
     width: '350px',
     height: '350px'
 };
-const SmallMap = ({zoomLevel, game, club}) => {
+const SmallMap = ({zoomLevel, game, }) => {
     const { isLoaded, loadError } = useLoadScript({
         id: 'google-map-script',
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAP_KEY
@@ -23,12 +23,9 @@ const SmallMap = ({zoomLevel, game, club}) => {
 
     const onLoad =  useCallback (async function callback(map) {
         const geocoder =  new google.maps.Geocoder()
-        let address;
-        if(game.thuis === "Uit"){
-            address = `${game.address}`+`${game.city}`
-        }else{
-            address = `${club[0].address}`+`${club[0].city}`
-        }
+
+          const address = `${game.address}`+`${game.city}`
+
 
         //const bounds = new window.google.maps.LatLngBounds(center);
         await geocoder.geocode({'address': address}, function(res,status){
@@ -39,7 +36,7 @@ const SmallMap = ({zoomLevel, game, club}) => {
         })
         map.setZoom(zoomLevel)
         setMap(map)
-    },[club, game, zoomLevel])
+    },[game, zoomLevel])
 
     const onUnmount = useCallback(function callback(){
         setMap(null)
@@ -89,23 +86,16 @@ const SmallMap = ({zoomLevel, game, club}) => {
              </Link>
             <div className={`bg-[ghostwhite] flex space-x-4 w-full   md:w-3/4 items-center  md:justify-center md:text-base text-xs  text-slate-500 rounded-md p-2 mb-2`}>
                 <div >
-                    {game.thuis === 'Uit' ? <>
-                            <div><span><span className={`font-bold`}>Locatie</span>: {game.naam}</span></div>
+
+                            <div><span><span className={`font-bold`}>Locatie</span>: {game.club}</span></div>
                             <div><span><span className={`font-bold`}>Adres</span>: {game.address}{' '}{game.city}</span>
                             </div>
                             <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} </span></div>
-                        </> :
-                        <>
-                            <div><span><span className={`font-bold`}>Locatie</span>: {club[0].naam}</span></div>
-                            <div><span><span className={`font-bold`}>Adres</span>: {club[0].address}{' '}{club[0].city}</span></div>
-                            <div><span><span className={`font-bold`}>Westrijd</span>: {game.time} </span></div>
-                        </>
-                    }
                 </div>
                 <div>
 
                     <div><span><span className={`font-bold`}>Verzamelen</span>: {game.verzamelen} </span></div>
-                    {game.thuis === 'Uit' && <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>}
+                    {game.thuis === 'Uit' && game.vervoer.length > 0 && <div><span><span className={`font-bold`}>Waar</span>: De Huif </span></div>}
                     <div>
                         {game.vervoer.length > 0 ?
                             <>
