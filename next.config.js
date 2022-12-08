@@ -9,7 +9,8 @@ module.exports = {
             "firebasestorage.googleapis.com",
             "logoapi.voetbal.nl",
             "website.storage",
-            "www.vvrijsbergen.nl"
+            "www.vvrijsbergen.nl",
+            "unitas30.nl"
         ]
 
     },
