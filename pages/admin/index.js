@@ -38,7 +38,7 @@ const Login = () => {
             });
             console.log(res)
             if(res.error){
-              console.log(err)
+              console.log(res.error)
 
             }else if(res.ok){
 
