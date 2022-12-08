@@ -6,7 +6,7 @@ import Button from "./Button";
 import Loader from "./Loader";
 
 const Header = () => {
-    const {data: session} = useSession()
+    const {data: session, status} = useSession()
     const {isValidating, nextGame} =  useGames()
 
 

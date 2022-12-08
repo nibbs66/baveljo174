@@ -12,7 +12,15 @@ import Vervoer from "../../../components/Vervoer";
 import Loader from "../../../components/Loader";
 
 const Index = () => {
-    const {data: session, loading} = useSession()
+    const[auth, setAuth] = useState(false)
+    const { status } = useSession({
+        required: true,
+        onUnauthenticated() {
+          setAuth(true)
+        }
+    })
+
+
     const [inputs, setInputs] = useState({})
     const [trans, setTrans] = useState([])
     const [selected, setSelected] = useState({})
@@ -91,25 +99,20 @@ const Index = () => {
         }
 
     }
-    console.log(trans.length)
-    if(loading){
+
+    if(status === "loading"){
         return (
-            <div className={`flex h-screen w-screen bg-white items-center justify-center`}>
-                <span><Loader/></span>
-            </div>
-        )
-    }
-    if(!loading && !session){
-        return (
-            <div className={`flex flex-col h-screen w-screen items-center justify-center`}>
-                <span className={`text-3xl bont-bold`}>Access Denied</span>
+            <div className={`flex flex-col h-screen w-screen bg-white items-center justify-center space-y-4`}>
+
+                   <span><Loader/></span>
+                {auth && <span className={`text-3xl bont-bold`}>Access Denied</span>}
                 <Link href={`/admin`}>
                     <button className={`text-white bg-blue-500 leading-none py-2 px-3 rounderd`}>Login</button>
                 </Link>
-
             </div>
         )
     }
+
 
     return (
 

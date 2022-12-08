@@ -23,6 +23,7 @@ export default NextAuth({
         // Use it to limit write operations. Set to 0 to always update the database.
         // Note: This option is ignored if using JSON Web Tokens
         updateAge: 24 * 60 * 60, // 24 hours
+
     },
 
     providers: [
@@ -31,7 +32,7 @@ export default NextAuth({
 
             async authorize(credentials,req, res ){
 
-
+                console.log('======>',req.body)
                 const user = await User.findOne({'email': credentials.email})
 
 
@@ -57,7 +58,7 @@ export default NextAuth({
     callbacks: {
 
         async jwt({token, user, profile}){
-            console.log(token)
+
 
             if (user) {
                 token.user = user
@@ -80,7 +81,7 @@ export default NextAuth({
         //maxAge: 5 * 60 * 1000,
     },
     pages: {
-        signIn: '/',
+        signIn: '/admin',
         signOut: '/',
         error: '/'
     }
