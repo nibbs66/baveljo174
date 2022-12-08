@@ -81,7 +81,7 @@ export default NextAuth({
     },
     pages: {
         signIn: '/',
-        signOut: '/admin',
+        signOut: '/',
         error: '/'
     }
 

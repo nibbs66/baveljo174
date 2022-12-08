@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import {XCircleIcon} from '@heroicons/react/24/solid'
 import Link from 'next/link'
@@ -6,7 +8,7 @@ const AdminButtons = ({signOut}) => {
 
     const handleClick = () => {
 
-            signOut({ callbackUrl: '/admin' })
+            signOut({ callbackUrl: '/' })
     }
     //       {session?.user &&
     return (
