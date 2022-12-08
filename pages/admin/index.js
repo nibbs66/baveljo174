@@ -42,8 +42,8 @@ const Login = () => {
 
             }else if(res.ok){
 
-                await getSession()
-                reset({username: '', password: ''})
+
+                reset({email: '', password: ''})
                 await router.push('/admin/scheduling')
 
                 /*if(location === 'home'){
