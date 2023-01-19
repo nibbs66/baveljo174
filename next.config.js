@@ -10,7 +10,8 @@ module.exports = {
             "logoapi.voetbal.nl",
             "website.storage",
             "www.vvrijsbergen.nl",
-            "unitas30.nl"
+            "unitas30.nl",
+            "tmssl.akamaized.net"
         ]
 
     },

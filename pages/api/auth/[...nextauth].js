@@ -32,7 +32,7 @@ export default NextAuth({
 
             async authorize(credentials,req, res ){
 
-                console.log('======>',req.body)
+
                 const user = await User.findOne({'email': credentials.email})
 
 
