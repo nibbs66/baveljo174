@@ -37,7 +37,7 @@ const TableHeader = () => {
 
             <th  className="px-2 align-middle border-b border-solid border-gray-200  text-sm whitespace-nowrap cursor-pointer pt-8 pb-2">
                 <div className={`flex justify-center items-center gap-1`}>
-                    Veroever
+                    Vervoer
                 </div>
             </th>
             <th  className="px-2 align-middle border-b border-solid border-gray-200  text-sm whitespace-nowrap cursor-pointer  pt-8 pb-2">

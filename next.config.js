@@ -11,7 +11,8 @@ module.exports = {
             "website.storage",
             "www.vvrijsbergen.nl",
             "unitas30.nl",
-            "tmssl.akamaized.net"
+            "tmssl.akamaized.net",
+            "www.vvbavel.nl"
         ]
 
     },

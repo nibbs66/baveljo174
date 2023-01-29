@@ -1,11 +1,11 @@
 import {useState} from 'react';
 import Image from 'next/image'
-import {format} from "date-fns";
+import {format, nextSaturday} from "date-fns";
 import Link from "next/link";
 const SmallSchedule = ({games}) => {
 
     return (
-        <div className={`flex items-center justify-center h-screen `}>
+        <div className={`flex items-center justify-center h-screen pt-24`}>
            <table className={`bg-white/90 rounded table-auto border-separate`}>
                <thead className={`text-xs`}>
                <tr >
@@ -13,7 +13,7 @@ const SmallSchedule = ({games}) => {
                    <th>Tegen</th>
                    <th>Thuis/Uit</th>
                    <th>Westrijd</th>
-                   <th>Veroever</th>
+                   <th>Vervoer</th>
                    <th>Vlaggen</th>
                    <th>Informatie</th>
                </tr>
@@ -35,7 +35,11 @@ const SmallSchedule = ({games}) => {
                            {game.time}
                        </td>
                        <td className={`text-center`}>
-                           {game.thuis ? 'NA' : game.vervoer.length === 0 ? 'Fiets' : game.vervoer}
+                           {game.vervoer.length > 0 ? game.vervoer.map((ver, idx)=>(
+                               <span key={idx}>
+                                {ver},{' '}
+                            </span>
+                           )) : game.thuis === 'Thuis' ? 'NVT' :  'Fiets'}
                        </td>
                        <td className={`text-center`}>
                            {game.vlaggen}

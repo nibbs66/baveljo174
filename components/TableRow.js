@@ -2,15 +2,16 @@ import React from 'react';
 import Image from "next/image";
 
 import Link from "next/link";
-import { format, } from "date-fns";
+import { format, isBefore, nextSaturday, sub } from "date-fns";
 const TableRow = ({club, games}) => {
+const saturday = nextSaturday(sub(new Date(), {days: 2}))
 
 
 
     return (
         <tbody className="divide-y divide-gray-200 ">
         {games.map((game, idx) => (
-                <tr key={game._id}>
+             !isBefore(new Date(game.datum), saturday) &&   <tr key={game._id}>
 
 
                     <td className={` align-middle text-center space-y-1 font-normal text-sm whitespace-nowrap px-2`}>
