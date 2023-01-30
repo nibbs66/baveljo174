@@ -2,9 +2,9 @@ import React from 'react';
 import Image from "next/image";
 
 import Link from "next/link";
-import { format, isBefore, nextSaturday, sub } from "date-fns";
+import { format, isBefore, nextFriday, sub } from "date-fns";
 const TableRow = ({club, games}) => {
-const saturday = nextSaturday(sub(new Date(), {days: 2}))
+const saturday = nextFriday(new Date())
 
 
 
