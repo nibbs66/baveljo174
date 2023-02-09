@@ -20,6 +20,7 @@ console.log(nextGame)
     return (
        <div className={`w-full bg-white rounded-md drop-shadow-xl  m-auto py-2 px-4`}>
            <h1 className={`text-center text-lg md:text-xl`}>Volgende Westrijd: {format(new Date(nextGame[0]?.datum), 'dd MMM yyyy')} {nextGame[0]?.time} uur</h1>
+           <h1 className={`text-center text-lg md:text-xl font-bold`}>{nextGame[0].thuis}</h1>
 
            <div className={`flex justify-around text-sm md:text-base`}>
                <span>Verzamelen: {nextGame[0].verzamelen}</span>
