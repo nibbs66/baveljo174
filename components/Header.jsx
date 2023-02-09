@@ -4,6 +4,7 @@ import {format} from "date-fns";
 import { useSession, signOut } from "next-auth/react"
 import Button from "./Button";
 import Loader from "./Loader";
+import SoccerBall from "./SoccerBall";
 
 const Header = () => {
     const {data: session, status} = useSession()
@@ -13,7 +14,7 @@ console.log(nextGame)
     if(isValidating){
         return (
             <div className={`flex  bg-white items-center justify-center`}>
-                <span><Loader/></span>
+                <span><SoccerBall/></span>
             </div>
         )
     }

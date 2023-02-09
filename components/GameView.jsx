@@ -20,7 +20,7 @@ console.log(nextGame)
     return (
        <div className={`w-full bg-white rounded-md drop-shadow-xl  m-auto py-2 px-4`}>
            <h1 className={`text-center text-lg md:text-xl`}>Volgende Westrijd: {format(new Date(nextGame[0]?.datum), 'dd MMM yyyy')} {nextGame[0]?.time} uur</h1>
-           <h1 className={`text-center text-lg md:text-xl font-bold`}>{nextGame[0].thuis}</h1>
+
            <div className={`flex justify-around text-sm md:text-base`}>
                <span>Verzamelen: {nextGame[0].verzamelen}</span>
                <span>Waar: {nextGame[0].thuis === "Uit" ? "De Huif" : "VV Bavel"}</span>
@@ -44,12 +44,13 @@ console.log(nextGame)
                </div>
            </div>
            <div className={`flex justify-around text-sm md:text-base`}>
+               <span>Veld: {nextGame[0].field}</span>
                <span>Vlaggen: {nextGame[0].vlaggen}</span>
                <span>Vervoer: {nextGame[0].vervoer.length > 0 ? nextGame[0].vervoer.map((ver, idx)=>(
                    <span key={idx}>
                                 {ver},{' '}
                             </span>
-               )) : game.thuis === 'Thuis' ? 'NVT' :  'Fiets'}</span>
+               )) : nextGame[0].thuis === 'Thuis' ? 'NVT' :  'Fiets'}</span>
            </div>
            <div className={`flex flex-col items-center text-sm md:text-base`}>
                <span>Locatie: {nextGame[0].club}</span>

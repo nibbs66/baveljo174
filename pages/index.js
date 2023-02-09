@@ -6,12 +6,13 @@ import SmallSchedule from "../components/SmallSchedule";
 import useGames from "./api/swr/useGames";
 import Loader from "../components/Loader";
 import GameView from "../components/GameView";
+import SoccerBall from "../components/SoccerBall";
 const Index = () => {
     const { games, isValidating} =  useGames()
     if( isValidating){
         return (
             <div className={`flex max-h-[calc(100vh - 128px)] w-screen  items-center justify-center`}>
-                <span><Loader/></span>
+                <span><SoccerBall/></span>
             </div>
         )
     }
